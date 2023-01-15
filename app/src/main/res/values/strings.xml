@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Football Club</string>
+    <string name="titulo">Football Club</string>
+    <string name="bt_login">Iniciar Sesión</string>
+    <string name="bt_registrar">Registrarse</string>
+    <string name="txt_registrar">¿No tienes cuenta? Registrate</string>
+</resources>
