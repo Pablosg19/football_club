@@ -7,6 +7,6 @@
     <string name="tituloRegistrar">Crea tu cuenta</string>
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>
-    <string name="terminos">Acepta nuestros términos y política de privacidad</string>
+    <string name="terminos">Acepta nuestros términos y condiciones</string>
     <string name="crearCuenta">Crear</string>
 </resources>

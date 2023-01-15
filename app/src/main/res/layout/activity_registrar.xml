@@ -71,6 +71,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="130dp"
         android:text="@string/crearCuenta"
+        android:onClick="añadirUsuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_terminos" />
