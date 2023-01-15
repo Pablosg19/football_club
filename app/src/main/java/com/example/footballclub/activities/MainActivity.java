@@ -2,8 +2,10 @@ package com.example.footballclub.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.footballclub.R;
 import com.example.footballclub.modelo.ConfiguracionDB;
@@ -17,5 +19,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    }
+
+    public void registrarActivity(View view) {
+        Intent intent = new Intent(this, RegistrarActivity.class);
+        startActivity(intent);
     }
 }
