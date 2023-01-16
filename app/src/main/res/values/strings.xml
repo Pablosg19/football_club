@@ -3,7 +3,8 @@
     <string name="titulo">Football Club</string>
     <string name="bt_login">Iniciar Sesión</string>
     <string name="bt_registrar">Registrarse</string>
-    <string name="txt_registrar">¿No tienes cuenta? Registrate</string>
+    <string name="txt_registrar">¿No tienes cuenta?</string>
+    <string name="txt_linkRegistrar">Registrate</string>
     <string name="tituloRegistrar">Crea tu cuenta</string>
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>

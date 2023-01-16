@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -13,8 +14,10 @@ import android.widget.Toast;
 import com.example.footballclub.R;
 import com.example.footballclub.clases.Usuario;
 import com.example.footballclub.controladores.UsuarioController;
+import com.example.footballclub.modelo.UsuariosDB;
 
 import java.io.StringReader;
+import java.util.ArrayList;
 
 public class RegistrarActivity extends AppCompatActivity {
 
@@ -28,12 +31,12 @@ public class RegistrarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
         edtUsuario = (EditText) findViewById(R.id.edt_usuarioRegistrar);
-        edtContraseña = (EditText) findViewById(R.id.edt_contraseña);
+        edtContraseña = (EditText) findViewById(R.id.edt_contraseñaRegistrar);
         terminos = (CheckBox) findViewById(R.id.cb_terminos);
 
     }
 
-    public void añadirUsuario(View view) {
+    public void anadirUsuario(View view) {
         String nombreUser = String.valueOf(edtUsuario.getText());
         String contraseña = String.valueOf(edtContraseña.getText());
         boolean error = false;
@@ -41,7 +44,7 @@ public class RegistrarActivity extends AppCompatActivity {
             edtUsuario.setError("Debes escribir el nombre de usuario");
             error = true;
         }
-        else if ( nombreUser.length() > 15){
+        else if (nombreUser.length() > 15){
             edtUsuario.setError("El nombre de usuario tiene un máximo de 15 carácteres");
             error = true;
         }
@@ -59,27 +62,39 @@ public class RegistrarActivity extends AppCompatActivity {
         if (error){
             return;
         }
-        AlertDialog.Builder confirmarUsuario = new AlertDialog.Builder(this);
-        confirmarUsuario.setTitle("¿Desea crear este usuario?");
-        confirmarUsuario.setPositiveButton("Si", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Usuario user = new Usuario(nombreUser, contraseña);
-                boolean nuevoUsuarioOK = UsuarioController.nuevoUsuario(user);
-                mostrarMensaje(nuevoUsuarioOK);
-            }
-        });
-        confirmarUsuario.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        else{
+            AlertDialog.Builder confirmarUsuario = new AlertDialog.Builder(this);
+            confirmarUsuario.setTitle("¿Desea crear este usuario?");
+            confirmarUsuario.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+                    usuarios = UsuariosDB.obtenerUsuarios();
+                    for (Usuario u: usuarios) {
+                        if(nombreUser.equals(u.getNombreUsuario())){
+                            edtUsuario.setError("El usuario introducido ya existe");
+                            return;
+                        }
+                    }
+                    Usuario user = new Usuario(nombreUser, contraseña);
+                    boolean nuevoUsuarioOK = UsuarioController.nuevoUsuario(user);
+                    mostrarMensaje(nuevoUsuarioOK);
+                }
+            });
+            confirmarUsuario.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
-        confirmarUsuario.show();
+                }
+            });
+            confirmarUsuario.show();
+        }
     }
     public void mostrarMensaje(boolean nuevoUsuarioOK){
         if(nuevoUsuarioOK){
             Toast.makeText(this,"Usuario creado correctamente", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
         else {
             Toast.makeText(this,"No se ha podido crear el usuario", Toast.LENGTH_LONG).show();

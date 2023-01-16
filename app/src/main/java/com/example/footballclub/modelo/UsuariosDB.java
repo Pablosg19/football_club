@@ -20,7 +20,7 @@ public class UsuariosDB {
             return false;
         }
         try{
-            String ordenSQL = "INSERT INTO usuarios ('nombreUsuario', 'contraseña') VALUES(?,?);";
+            String ordenSQL = "INSERT INTO usuarios (nombreUsuario, contraseña) VALUES(?,?);";
             PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
             sentencia.setString(1,user.getNombreUsuario());
             sentencia.setString(2, user.getContraseña());

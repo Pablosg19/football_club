@@ -4,19 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.footballclub.R;
 import com.example.footballclub.clases.Usuario;
 import com.example.footballclub.controladores.UsuarioController;
-import com.example.footballclub.modelo.ConfiguracionDB;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -66,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 datosIncorrectos.setVisibility(View.VISIBLE);
-                return;
             }
         }
 

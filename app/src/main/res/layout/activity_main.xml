@@ -39,10 +39,9 @@
         android:layout_marginStart="110dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="110dp"
+        android:onClick="iniciarSesion"
         android:text="@string/bt_login"
         android:textSize="14sp"
-        android:onClick="iniciarSesion"
-        app:layout_constraintBottom_toTopOf="@+id/bt_registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.377"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,34 +79,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_usuario" />
 
-    <Button
-        android:id="@+id/bt_registrar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="110dp"
-        android:onClick="registrarActivity"
-        android:text="@string/bt_registrar"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_login" />
-
     <TextView
         android:id="@+id/txt_registrar"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="110dp"
-        android:onClick="registrarActivity"
         android:text="@string/txt_registrar"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtLinkRegistro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_registrar" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_login" />
 
     <TextView
         android:id="@+id/txtError"
@@ -123,5 +105,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtLinkRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="110dp"
+        android:onClick="registrarActivity"
+        android:text="@string/txt_linkRegistrar"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintStart_toEndOf="@+id/txt_registrar"
+        app:layout_constraintTop_toBottomOf="@+id/bt_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
