@@ -11,4 +11,7 @@
     <string name="terminos">Acepta nuestros términos y condiciones</string>
     <string name="crearCuenta">Crear</string>
     <string name="errorUsuario">El usuario o la contraseña son incorrectos</string>
+    <string name="usuarioExistente">El nombre de usuario ya existe</string>
+    <string name="cerrarSesion">Cerrar sesión</string>
+    <string name="buscar">Buscar</string>
 </resources>

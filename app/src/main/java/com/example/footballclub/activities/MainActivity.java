@@ -12,10 +12,12 @@ import com.example.footballclub.R;
 import com.example.footballclub.clases.Usuario;
 import com.example.footballclub.controladores.UsuarioController;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String USUARIO_INTRODUCIDO = "comexmplefootballclubusuariointroducido";
     private EditText edtUsuario;
     private EditText edtContraseña;
     private TextView datosIncorrectos;
@@ -29,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         edtUsuario = (EditText) findViewById(R.id.edt_usuario);
         edtContraseña = (EditText) findViewById(R.id.edt_contraseña);
         datosIncorrectos = (TextView) findViewById(R.id.txtError);
+
+        edtUsuario.setText("");
+        edtContraseña.setText("");
+        datosIncorrectos.setVisibility(View.INVISIBLE);
     }
 
     public void registrarActivity(View view) {
@@ -56,13 +62,11 @@ public class MainActivity extends AppCompatActivity {
             if (usuario.equals(user.getNombreUsuario()) && contraseña.equals(user.getContraseña())){
                 datosIncorrectos.setVisibility(View.INVISIBLE);
                 Intent intent = new Intent(this, PrincipalActivity.class);
-                intent.putExtra("nombreUsuario",user.getNombreUsuario());
+                intent.putExtra(USUARIO_INTRODUCIDO,user.getNombreUsuario());
                 startActivity(intent);
-            }
-            else{
-                datosIncorrectos.setVisibility(View.VISIBLE);
+                return;
             }
         }
-
+        datosIncorrectos.setVisibility(View.VISIBLE);
     }
 }

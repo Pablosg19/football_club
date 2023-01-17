@@ -17,13 +17,14 @@ public class EquipoDB {
         Connection conexion = ConfiguracionDB.conectarConBaseDeDatos();
         if(conexion == null)
         {
+            Log.i("sql","no conecta la base de datos");
             return null;
         }
         ArrayList<Equipo> equipos = new ArrayList<Equipo>();
         try
         {
             Statement sentencia = conexion.createStatement();
-            String ordenSQL = "SELECT * FROM equipos ORDER BY idEquipos";
+            String ordenSQL = "SELECT * FROM equipos ORDER BY idEquipos;";
             ResultSet resultado = sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {

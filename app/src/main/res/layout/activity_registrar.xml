@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     android:visibility="visible"
     tools:context=".activities.RegistrarActivity">
 
@@ -18,6 +19,7 @@
         android:text="@string/tituloRegistrar"
         android:textColor="@color/black"
         android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +46,8 @@
         android:ems="10"
         android:hint="@string/usuario"
         android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +63,8 @@
         android:ems="10"
         android:hint="@string/contraseña"
         android:inputType="textPersonName|textPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,13 +87,30 @@
         android:id="@+id/cb_terminos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="110dp"
+        android:layout_marginEnd="95dp"
         android:text="@string/terminos"
-        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="14sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_contraseñaRegistrar" />
+
+    <TextView
+        android:id="@+id/txtUsuarioExistente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/usuarioExistente"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_crearCuenta" />
 </androidx.constraintlayout.widget.ConstraintLayout>

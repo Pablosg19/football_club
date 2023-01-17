@@ -1,9 +1,13 @@
 package com.example.footballclub.clases;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
-public class Liga {
+public class Liga implements Serializable {
     // Atributos
     private int idLiga;
     private String nombreLiga;
@@ -61,4 +65,5 @@ public class Liga {
     public int hashCode() {
         return Objects.hash(idLiga);
     }
+
 }

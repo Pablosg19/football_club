@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.footballclub.R;
@@ -24,6 +25,7 @@ public class RegistrarActivity extends AppCompatActivity {
     private EditText edtUsuario;
     private EditText edtContraseña;
     private CheckBox terminos;
+    private TextView usuarioExistente;
 
 
     @Override
@@ -33,7 +35,7 @@ public class RegistrarActivity extends AppCompatActivity {
         edtUsuario = (EditText) findViewById(R.id.edt_usuarioRegistrar);
         edtContraseña = (EditText) findViewById(R.id.edt_contraseñaRegistrar);
         terminos = (CheckBox) findViewById(R.id.cb_terminos);
-
+        usuarioExistente = (TextView) findViewById(R.id.txtUsuarioExistente);
     }
 
     public void anadirUsuario(View view) {
@@ -72,7 +74,7 @@ public class RegistrarActivity extends AppCompatActivity {
                     usuarios = UsuariosDB.obtenerUsuarios();
                     for (Usuario u: usuarios) {
                         if(nombreUser.equals(u.getNombreUsuario())){
-                            edtUsuario.setError("El usuario introducido ya existe");
+                            usuarioExistente.setVisibility(View.VISIBLE);
                             return;
                         }
                     }

@@ -1,8 +1,9 @@
 package com.example.footballclub.clases;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Equipo {
+public class Equipo implements Serializable {
     // Atributos
     private int idEquipo;
     private String nombreEquipo;
