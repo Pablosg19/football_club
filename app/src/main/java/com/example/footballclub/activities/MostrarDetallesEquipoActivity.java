@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.footballclub.R;
@@ -42,5 +43,10 @@ public class MostrarDetallesEquipoActivity extends AppCompatActivity {
             }
             txt_mostrar_ligaEquipo.setText("Liga: " + liga);
         }
+    }
+
+    public void volverActivityPrincipal(View view) {
+        Intent intent = new Intent(this, PrincipalActivity.class);
+        startActivity(intent);
     }
 }

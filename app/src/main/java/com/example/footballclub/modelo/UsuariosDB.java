@@ -59,7 +59,7 @@ public class UsuariosDB {
             conexion.close();
             return usuarios;
         } catch (SQLException e){
-            Log.i("sql", "error sql");
+            Log.i("sql","error sql obtenerUsuariosDB");
             return usuarios;
         }
     }

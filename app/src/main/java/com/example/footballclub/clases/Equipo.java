@@ -1,9 +1,12 @@
 package com.example.footballclub.clases;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Equipo implements Serializable {
+public class Equipo implements Parcelable {
     // Atributos
     private int idEquipo;
     private String nombreEquipo;
@@ -18,6 +21,27 @@ public class Equipo implements Serializable {
         this.numTitulos = numTitulos;
         this.idLiga = idLiga;
     }
+
+    protected Equipo(Parcel in) {
+        idEquipo = in.readInt();
+        nombreEquipo = in.readString();
+        ciudadEquipo = in.readString();
+        numTitulos = in.readInt();
+        idLiga = in.readInt();
+    }
+
+    public static final Creator<Equipo> CREATOR = new Creator<Equipo>() {
+        @Override
+        public Equipo createFromParcel(Parcel in) {
+            return new Equipo(in);
+        }
+
+        @Override
+        public Equipo[] newArray(int size) {
+            return new Equipo[size];
+        }
+    };
+
     // Getters y Setters
     public int getIdEquipo() {
         return idEquipo;
@@ -70,5 +94,19 @@ public class Equipo implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(idEquipo);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(idEquipo);
+        dest.writeString(nombreEquipo);
+        dest.writeString(ciudadEquipo);
+        dest.writeInt(numTitulos);
+        dest.writeInt(idLiga);
     }
 }

@@ -5,6 +5,7 @@ import com.example.footballclub.tareas.equipo.TareaActualizarEquipo;
 import com.example.footballclub.tareas.equipo.TareaBorrarEquipo;
 import com.example.footballclub.tareas.equipo.TareaNuevoEquipo;
 import com.example.footballclub.tareas.equipo.TareaObtenerEquipos;
+import com.example.footballclub.tareas.equipo.TareaObtenerEquiposBusqueda;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -114,5 +115,27 @@ public class EquipoController {
             return actualizarEquipoOK;
         }
     }
-
+    //----------------------------------------------------------------------
+    public static ArrayList<Equipo> obtenerEquiposBusqueda(String filtro){
+        ArrayList<Equipo> equipos = null;
+        FutureTask tarea = new FutureTask(new TareaObtenerEquiposBusqueda(filtro));
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(tarea);
+        try {
+            equipos = (ArrayList<Equipo>) tarea.get();
+            es.shutdown();
+            try {
+                if (!es.awaitTermination(2000, TimeUnit.MILLISECONDS)){
+                    es.shutdownNow();
+                }
+            }  catch (InterruptedException e) {
+                es.shutdownNow();
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return equipos;
+    }
 }

@@ -14,6 +14,7 @@
         android:layout_marginStart="296dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtnombreUsuarioIniciado"
         app:layout_constraintEnd_toStartOf="@+id/txt_titulo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -49,11 +50,14 @@
         app:layout_constraintTop_toBottomOf="@+id/rvEquipos" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/img_busqueda"
         android:layout_width="39dp"
         android:layout_height="42dp"
         android:layout_marginStart="110dp"
         android:layout_marginTop="20dp"
+        android:onClick="realizarBusqueda"
+        app:layout_constraintBottom_toTopOf="@+id/rvEquipos"
+        app:layout_constraintEnd_toStartOf="@+id/edtBuscar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtnombreUsuarioIniciado"
         app:srcCompat="@drawable/lupa" />
@@ -64,13 +68,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="110dp"
+        android:layout_marginBottom="35dp"
         android:ems="10"
         android:hint="@string/buscar"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/rvEquipos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/img_busqueda"
         app:layout_constraintTop_toBottomOf="@+id/txtnombreUsuarioIniciado" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -81,9 +87,10 @@
         android:layout_marginTop="35dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="50dp"
+        android:background="#00FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/btCerrarSesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/img_busqueda" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
