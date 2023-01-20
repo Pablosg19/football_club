@@ -16,6 +16,24 @@
         android:theme="@style/Theme.FootballClub"
         tools:targetApi="31">
         <activity
+            android:name=".activities.liga.ActualizarLigaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.equipo.BorrarEquipoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.liga.AnadirLigaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.equipo.ActualizarEquipoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.equipo.AnadirEquipoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AjustesActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.MostrarDetallesEquipoActivity"
             android:exported="false" />
         <activity

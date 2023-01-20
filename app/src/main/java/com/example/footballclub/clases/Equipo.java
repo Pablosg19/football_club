@@ -14,7 +14,7 @@ public class Equipo implements Parcelable {
     private int numTitulos;
     private int idLiga;
     // Constructor
-    public Equipo(int idEquipo, String nombreEquipo, String ciudadEquipo, int numTitulos, int idLiga) {
+    public Equipo(int idEquipo,String nombreEquipo, String ciudadEquipo, int numTitulos, int idLiga) {
         this.idEquipo = idEquipo;
         this.nombreEquipo = nombreEquipo;
         this.ciudadEquipo = ciudadEquipo;
@@ -43,14 +43,8 @@ public class Equipo implements Parcelable {
     };
 
     // Getters y Setters
-    public int getIdEquipo() {
-        return idEquipo;
-    }
-
-    public void setIdEquipo(int idEquipo) {
-        this.idEquipo = idEquipo;
-    }
-
+    public int getIdEquipo() { return idEquipo; }
+    public void setIdEquipo(int idEquipo) { this.idEquipo = idEquipo; }
     public String getNombreEquipo() {
         return nombreEquipo;
     }
@@ -83,17 +77,19 @@ public class Equipo implements Parcelable {
         this.idLiga = idLiga;
     }
     // HasCode and Equals
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Equipo)) return false;
         Equipo equipo = (Equipo) o;
-        return idEquipo == equipo.idEquipo;
+        return idEquipo == equipo.idEquipo && nombreEquipo.equals(equipo.nombreEquipo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idEquipo);
+        return Objects.hash(idEquipo, nombreEquipo);
     }
 
     @Override

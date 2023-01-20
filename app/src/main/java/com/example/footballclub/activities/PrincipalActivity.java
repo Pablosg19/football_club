@@ -65,4 +65,8 @@ public class PrincipalActivity extends AppCompatActivity {
         rvEquipos.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    public void ajustesBBDD(View view) {
+        Intent intent = new Intent(this, AjustesActivity.class);
+        startActivity(intent);
+    }
 }

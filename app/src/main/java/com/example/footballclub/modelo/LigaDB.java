@@ -47,12 +47,11 @@ public class LigaDB {
             return false;
         }
         try {
-            String ordenSQL = "INSERT INTO ligas ('idliga','NombreLiga','PaisLiga','FechaInicio') VALUES (?,?,?,?);";
+            String ordenSQL = "INSERT INTO ligas (idliga, NombreLiga, PaisLiga, FechaInicio) VALUES ('0',?,?,?);";
             PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
-            sentencia.setInt(1,l.getIdLiga());
-            sentencia.setString(2,l.getNombreLiga());
-            sentencia.setString(3,l.getPaisLiga());
-            sentencia.setDate(4, l.getFechaInicio());
+            sentencia.setString(1,l.getNombreLiga());
+            sentencia.setString(2,l.getPaisLiga());
+            sentencia.setDate(3, l.getFechaInicio());
             int filasAfectadas = sentencia.executeUpdate();
             sentencia.close();
             conexion.close();
@@ -73,7 +72,7 @@ public class LigaDB {
             return false;
         }
         try {
-            String ordenSQL = "DELETE FROM 'ligas' WHERE ('NombreLiga' = ?);";
+            String ordenSQL = "DELETE FROM ligas WHERE (NombreLiga = ?);";
             PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
             sentencia.setString(1,nombreLiga);
             int filasAfectadas = sentencia.executeUpdate();

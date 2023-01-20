@@ -24,7 +24,7 @@ public class EquipoDB {
         try
         {
             Statement sentencia = conexion.createStatement();
-            String ordenSQL = "SELECT * FROM equipos ORDER BY idEquipo;";
+            String ordenSQL = "SELECT * FROM equipos ORDER BY nombreEquipo;";
             ResultSet resultado = sentencia.executeQuery(ordenSQL);
             while (resultado.next())
             {
@@ -55,13 +55,12 @@ public class EquipoDB {
             return false;
         }
         try{
-            String ordenSQL = "INSERT INTO equipos ('idEquipo', 'NombreEquipo', 'CiudadEquipo','numTitulos','idliga') VALUES(?,?,?,?,?,?);";
+            String ordenSQL = "INSERT INTO equipos (idEquipo, NombreEquipo, CiudadEquipo,NumTitulos, idliga) VALUES('0',?,?,?,?);";
             PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
-            sentencia.setInt(1,e.getIdEquipo());
-            sentencia.setString(2,e.getNombreEquipo());
-            sentencia.setString(3,e.getCiudadEquipo());
-            sentencia.setInt(4,e.getNumTitulos());
-            sentencia.setInt(5,e.getIdLiga());
+            sentencia.setString(1,e.getNombreEquipo());
+            sentencia.setString(2,e.getCiudadEquipo());
+            sentencia.setInt(3,e.getNumTitulos());
+            sentencia.setInt(4,e.getIdLiga());
             int filasAfectadas = sentencia.executeUpdate();
             sentencia.close();
             conexion.close();
@@ -82,7 +81,7 @@ public class EquipoDB {
             return false;
         }
         try{
-            String ordenSQL = "DELETE FROM 'equipos' WHERE ('NombreEquipo' = ?);";
+            String ordenSQL = "DELETE FROM equipos WHERE (NombreEquipo = ?);";
             PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
             sentencia.setString(1,equipo);
             int filasAfectadas = sentencia.executeUpdate();

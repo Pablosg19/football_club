@@ -14,4 +14,19 @@
     <string name="usuarioExistente">El nombre de usuario ya existe</string>
     <string name="cerrarSesion">Cerrar sesión</string>
     <string name="buscar">Buscar</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="añadirEquipo">Añadir Equipo</string>
+    <string name="borrarEquipo">Borrar Equipo</string>
+    <string name="actualizarEquipo">Actualizar Equipo</string>
+    <string name="añadirLiga">Añadir Liga</string>
+    <string name="borrarLiga">Borrar Liga</string>
+    <string name="actualizarLiga">Actualizar Liga</string>
+    <string name="btAñadirEquipo">Añadir</string>
+    <string name="nombre">Nombre</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="numTitulos">Número de titulos</string>
+    <string name="nombreLiga">Liga</string>
+    <string name="pais">Pais</string>
+    <string name="fecha_inicio">Fecha de inicio</string>
+    <string name="borrar">Borrar</string>
 </resources>
