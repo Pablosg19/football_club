@@ -18,6 +18,7 @@ import com.example.footballclub.activities.PrincipalActivity;
 import com.example.footballclub.clases.Equipo;
 import com.example.footballclub.clases.Liga;
 import com.example.footballclub.controladores.EquipoController;
+import com.example.footballclub.controladores.LigaController;
 import com.example.footballclub.modelo.LigaDB;
 
 import java.lang.reflect.Array;
@@ -48,7 +49,7 @@ public class AnadirEquipoActivity extends AppCompatActivity {
         String numTitulos = String.valueOf(edt_anadirNumTitulos.getText());
         String nombreLiga = String.valueOf(edt_anadirNombreLiga.getText());
         int idLigaEquipo = 0;
-        ArrayList<Liga> ligas = LigaDB.obtenerLigas();
+        ArrayList<Liga> ligas = LigaController.obtenerLigas();
         for (Liga l: ligas) {
             if(l.getNombreLiga().equals(nombreLiga)){
                 idLigaEquipo = l.getIdLiga();
@@ -81,6 +82,13 @@ public class AnadirEquipoActivity extends AppCompatActivity {
         }
         if(error){
             return;
+        }
+        ArrayList<Equipo> equipos = EquipoController.obtenerEquipos();
+        for (Equipo e : equipos){
+            if (nombreEquipo.equals(e.getNombreEquipo())){
+                edt_anadirNombreEquipo.setText("Este equipo ya existe");
+                return;
+            }
         }
         AlertDialog.Builder crearEquipo = new AlertDialog.Builder(this);
         crearEquipo.setTitle("¿Crear equipo?");

@@ -2,7 +2,6 @@ package com.example.footballclub.activities.equipo;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +18,6 @@ import com.example.footballclub.activities.ListaEquiposAdapter;
 import com.example.footballclub.activities.PrincipalActivity;
 import com.example.footballclub.clases.Equipo;
 import com.example.footballclub.controladores.EquipoController;
-import com.example.footballclub.modelo.EquipoDB;
 
 import java.util.ArrayList;
 
@@ -34,7 +32,7 @@ public class BorrarEquipoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrar_equipo);
         edt_BorrarNombreEquipo = (EditText) findViewById(R.id.edt_borrarNombreEquipo);
-        rv_BorrarEquipo = (RecyclerView) findViewById(R.id.rv_borrarEquipo);
+        rv_BorrarEquipo = (RecyclerView) findViewById(R.id.rv_actualizarEquipo);
 
         borrarEquiposAdapter = new ListaEquiposAdapter(this);
 

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.FootballClub"
         tools:targetApi="31">
         <activity
+            android:name=".activities.equipo.ActualizarEquipoActivity2"
+            android:exported="false" />
+        <activity
             android:name=".activities.liga.ActualizarLigaActivity"
             android:exported="false" />
         <activity
