@@ -38,7 +38,7 @@ public class LigaViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         int position = getAdapterPosition();
         ArrayList<Liga> ligas = this.leAdapter.getListaLigas();
         Liga l = ligas.get(position);
-        Intent intent = new Intent(leAdapter.getC(), MostrarDetallesEquipoActivity.class);
+        Intent intent = new Intent(leAdapter.getC(), MostrarDetallesLigaActivity.class);
         intent.putExtra(EXTRA_OBJETO_LIGA, l);
         leAdapter.getC().startActivity(intent);
     }
