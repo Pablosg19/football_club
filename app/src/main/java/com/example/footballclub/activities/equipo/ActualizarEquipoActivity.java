@@ -32,7 +32,10 @@ public class ActualizarEquipoActivity extends AppCompatActivity {
         rv_ActualizarEquipo = (RecyclerView) findViewById(R.id.rv_actualizarEquipo);
 
         actualizarEquiposAdapter = new ListaEquiposAdapter(this);
-
+        ArrayList<Equipo> equipos = EquipoController.obtenerEquipos();
+        if(equipos != null){
+            actualizarEquiposAdapter.setListaEquipos(equipos);
+        }
         rv_ActualizarEquipo.setAdapter(actualizarEquiposAdapter);
         rv_ActualizarEquipo.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -40,7 +43,6 @@ public class ActualizarEquipoActivity extends AppCompatActivity {
     public void actualizarEquipo(View view) {
         String nombreEquipo = String.valueOf(edt_actualizarNombreEquipo.getText());
         ArrayList<Equipo> equipos = EquipoController.obtenerEquiposBusqueda(nombreEquipo);
-        Equipo equipoActualizar = null;
         if (equipos == null){
             edt_actualizarNombreEquipo.setError("Debes rellenar este campo");
             return;

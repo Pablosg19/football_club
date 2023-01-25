@@ -73,23 +73,19 @@ public class ActualizarEquipoActivity2 extends AppCompatActivity {
         String nombreLiga = String.valueOf(edt_ActualizarNombreLiga.getText());
         boolean error = false;
         if (nombreEquipo.isEmpty()){
-            edt_ActualizarNombreEquipo.setError("");
-            bt_ActualizarEquipo.setError("Debes rellenar todos los campos");
+            edt_ActualizarNombreEquipo.setError("Debes rellenar todos los campos");
             error = true;
         }
         if (ciudadEquipo.isEmpty()){
-            edt_ActualizarCiudadEquipo.setError("");
-            bt_ActualizarEquipo.setError("Debes rellenar todos los campos");
+            edt_ActualizarCiudadEquipo.setError("Debes rellenar todos los campos");
             error = true;
         }
         if (numTitulos.isEmpty()){
-            edt_ActualizarNumTitulos.setError("");
-            bt_ActualizarEquipo.setError("Debes rellenar todos los campos");
+            edt_ActualizarNumTitulos.setError("Debes rellenar todos los campos");
             error = true;
         }
         if (nombreLiga.isEmpty()){
-            edt_ActualizarNombreLiga.setError("");
-            bt_ActualizarEquipo.setError("Debes rellenar todos los campos");
+            edt_ActualizarNombreLiga.setError("Debes rellenar todos los campos");
             error = true;
         }
         if (error){

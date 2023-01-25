@@ -1,7 +1,9 @@
 package com.example.footballclub.activities;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +28,7 @@ public class EquipoViewHolder extends RecyclerView.ViewHolder implements View.On
         txt_rv_ciudadEquipo =(TextView) itemView.findViewById(R.id.txt_rv_ciudadEquipo);
         txt_rv_numTitulos = (TextView) itemView.findViewById(R.id.txt_rv_numTitulos);
         txt_rv_ligaEquipo = (TextView) itemView.findViewById(R.id.txt_rv_ligaEquipo);
+
         this.leAdapter = leAdapter;
         itemView.setOnClickListener(this);
     }

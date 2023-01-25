@@ -114,4 +114,48 @@ public class LigaDB {
             return false;
         }
     }
+
+    public static ArrayList<Liga> obtenerLigasBusqueda(String filtro) {
+        Connection conexion = ConfiguracionDB.conectarConBaseDeDatos();
+        if(conexion == null)
+        {
+            Log.i("sql","no conecta la base de datos");
+            return null;
+        }
+        if (filtro == null){
+            Log.i("filtro","nulo");
+        }
+        else{
+            Log.i("filtro", filtro);
+        }
+        ArrayList<Liga> ligas = new ArrayList<Liga>();
+        try
+        {
+            filtro = "%"+filtro+"%";
+            String ordenSQL = "SELECT * FROM ligas WHERE NombreLiga LIKE ? or PaisLiga LIKE ?;";
+            PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
+            sentencia.setString(1, filtro);
+            sentencia.setString(2, filtro);
+            ResultSet resultado = sentencia.executeQuery();
+
+            while (resultado.next())
+            {
+                int idLiga = resultado.getInt("idliga");
+                String nombreLiga = resultado.getString("NombreLiga");
+                String paisLiga = resultado.getString("PaisLiga");
+                Date fechaInicio = resultado.getDate("FechaInicio");
+                Liga l = new Liga(idLiga, nombreLiga, paisLiga, fechaInicio);
+                ligas.add(l);
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+            return ligas;
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            Log.i("sql","error sql obtenerLigasBusquedaDB");
+            return ligas;
+        }
+    }
 }

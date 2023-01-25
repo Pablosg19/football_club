@@ -35,7 +35,10 @@ public class BorrarEquipoActivity extends AppCompatActivity {
         rv_BorrarEquipo = (RecyclerView) findViewById(R.id.rv_actualizarEquipo);
 
         borrarEquiposAdapter = new ListaEquiposAdapter(this);
-
+        ArrayList<Equipo> equipos = EquipoController.obtenerEquipos();
+        if(equipos != null){
+            borrarEquiposAdapter.setListaEquipos(equipos);
+        }
         rv_BorrarEquipo.setAdapter(borrarEquiposAdapter);
         rv_BorrarEquipo.setLayoutManager(new LinearLayoutManager(this));
     }

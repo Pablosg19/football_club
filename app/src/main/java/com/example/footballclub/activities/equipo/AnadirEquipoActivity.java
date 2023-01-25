@@ -41,6 +41,7 @@ public class AnadirEquipoActivity extends AppCompatActivity {
         edt_anadirNumTitulos = (EditText) findViewById(R.id.edt_anadirNumTitulos);
         edt_anadirNombreLiga = (EditText) findViewById(R.id.edt_anadirNombreLiga);
         bt_anadirEquipo = (Button) findViewById(R.id.bt_crearEquipo);
+
     }
 
     public void addEquipo(View view) {
