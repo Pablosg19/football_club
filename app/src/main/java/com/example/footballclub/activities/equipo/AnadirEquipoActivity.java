@@ -31,7 +31,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AnadirEquipoActivity extends AppCompatActivity {
-
+//
     private EditText edt_anadirNombreEquipo;
     private EditText edt_anadirCiudadEquipo;
     private EditText edt_anadirNumTitulos;
