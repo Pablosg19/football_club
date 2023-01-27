@@ -12,6 +12,8 @@ public class ConfiguracionDB {
     public static final String USUARIODB = "root";
     public static final String CLAVEDB = "Psg_1910";
     private static final String OPCIONESHORA = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    public static final int ANCHO_IMAGENES_BITMAP = 120;
+    public static final int ALTO_IMAGENES_BITMAP = 120;
     // las opciones de hora tambien las puedes poner en mysql
     // SET GLOBAL time_zone = '+1:00';
     public static final String PUERTOMYSQL = "3306";

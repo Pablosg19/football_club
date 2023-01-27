@@ -76,8 +76,14 @@ public class ListaEquiposAdapter extends RecyclerView.Adapter<EquipoViewHolder> 
                     liga = l.getNombreLiga();
                 }
             }
-
             holder.txt_rv_ligaEquipo.setText("Liga: " + liga);
+
+            if (equipo_actual.getFotoEquipo() != null){
+                holder.img_rv_fotoEquipo.setImageBitmap(equipo_actual.getFotoEquipo());
+            }
+            else {
+                holder.img_rv_fotoEquipo.setImageResource(R.mipmap.ic_launcher_logo);
+            }
         }
     }
 

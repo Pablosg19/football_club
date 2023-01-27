@@ -1,9 +1,12 @@
 package com.example.footballclub.modelo;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.example.footballclub.bitmap.ImagenesBlobBitmap;
 import com.example.footballclub.clases.Equipo;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +36,18 @@ public class EquipoDB {
                 String ciudadEquipo = resultado.getString("CiudadEquipo");
                 int titulos = resultado.getInt("numTitulos");
                 int idLiga = resultado.getInt("idLiga");
-                Equipo e = new Equipo(idEquipo,nombreEquipo,ciudadEquipo,titulos,idLiga);
+                Blob fotoEquipo = resultado.getBlob("fotoEquipo");
+                Bitmap bm_foto;
+                Equipo e;
+                if(fotoEquipo != null){
+                    byte[] bfoto = ImagenesBlobBitmap.blob_to_bytes(fotoEquipo);
+                    bm_foto = ImagenesBlobBitmap.decodeSampledBitmapFrombyteArray(bfoto, ConfiguracionDB.ANCHO_IMAGENES_BITMAP, ConfiguracionDB.ALTO_IMAGENES_BITMAP);
+                    e = new Equipo(idEquipo,nombreEquipo,ciudadEquipo,titulos,idLiga,bm_foto);
+                }
+                else{
+                    e = new Equipo(idEquipo,nombreEquipo,ciudadEquipo,titulos,idLiga, null);
+
+                }
                 equipos.add(e);
             }
             resultado.close();
@@ -55,12 +69,19 @@ public class EquipoDB {
             return false;
         }
         try{
-            String ordenSQL = "INSERT INTO equipos (idEquipo, NombreEquipo, CiudadEquipo,NumTitulos, idliga) VALUES('0',?,?,?,?);";
+            String ordenSQL = "INSERT INTO equipos (idEquipo, NombreEquipo, CiudadEquipo,NumTitulos, idliga, fotoEquipo) VALUES('0',?,?,?,?,?);";
             PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
             sentencia.setString(1,e.getNombreEquipo());
             sentencia.setString(2,e.getCiudadEquipo());
             sentencia.setInt(3,e.getNumTitulos());
             sentencia.setInt(4,e.getIdLiga());
+            if (e.getFotoEquipo() != null){
+                byte[] bl1 = ImagenesBlobBitmap.bitmap_to_bytes_png(e.getFotoEquipo());
+                sentencia.setBytes(5,bl1);
+            }
+            else{
+                sentencia.setBytes(5, null);
+            }
             int filasAfectadas = sentencia.executeUpdate();
             sentencia.close();
             conexion.close();
@@ -104,12 +125,16 @@ public class EquipoDB {
             return false;
         }
         try {
-            String ordenSQL = "UPDATE equipos SET NombreEquipo = ?, CiudadEquipo = ?, numTitulos = ? WHERE NombreEquipo = ?;";
+            String ordenSQL = "UPDATE equipos SET NombreEquipo = ?, CiudadEquipo = ?, numTitulos = ?, fotoEquipo = ? WHERE NombreEquipo = ?;";
             PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
             sentencia.setString(1,e.getNombreEquipo());
             sentencia.setString(2,e.getCiudadEquipo());
             sentencia.setInt(3,e.getNumTitulos());
-            sentencia.setString(4,nombreEquipo);
+            if (e.getFotoEquipo() != null){
+                byte[] bl1 = ImagenesBlobBitmap.bitmap_to_bytes_png(e.getFotoEquipo());
+                sentencia.setBytes(4,bl1);
+            }
+            sentencia.setString(5,nombreEquipo);
             int filasAfectadas = sentencia.executeUpdate();
             sentencia.close();
             conexion.close();
@@ -142,7 +167,7 @@ public class EquipoDB {
         {
             Log.i("filtro",filtro);
             filtro = "%"+filtro+"%";
-            String ordenSQL = "SELECT idEquipo, NombreEquipo, CiudadEquipo, NumTitulos, equipos.idLiga FROM equipos INNER JOIN Ligas WHERE equipos.idLiga = ligas.idliga and (NombreEquipo LIKE ? or NombreLiga LIKE ?);";
+            String ordenSQL = "SELECT idEquipo, NombreEquipo, CiudadEquipo, NumTitulos, equipos.idLiga, fotoEquipo FROM equipos INNER JOIN Ligas WHERE equipos.idLiga = ligas.idliga and (NombreEquipo LIKE ? or NombreLiga LIKE ?);";
             PreparedStatement sentencia = conexion.prepareStatement(ordenSQL);
             sentencia.setString(1, filtro);
             sentencia.setString(2, filtro);
@@ -155,7 +180,18 @@ public class EquipoDB {
                 String ciudadEquipo = resultado.getString("CiudadEquipo");
                 int titulos = resultado.getInt("numTitulos");
                 int idLiga = resultado.getInt("idLiga");
-                Equipo e = new Equipo(idEquipo,nombreEquipo,ciudadEquipo,titulos,idLiga);
+                Blob fotoEquipo = resultado.getBlob("fotoEquipo");
+                Bitmap bm_foto;
+                Equipo e;
+                if(fotoEquipo != null){
+                    byte[] bfoto = ImagenesBlobBitmap.blob_to_bytes(fotoEquipo);
+                    bm_foto = ImagenesBlobBitmap.decodeSampledBitmapFrombyteArray(bfoto, ConfiguracionDB.ANCHO_IMAGENES_BITMAP, ConfiguracionDB.ALTO_IMAGENES_BITMAP);
+                    e = new Equipo(idEquipo,nombreEquipo,ciudadEquipo,titulos,idLiga,bm_foto);
+                }
+                else{
+                    e = new Equipo(idEquipo,nombreEquipo,ciudadEquipo,titulos,idLiga, null);
+
+                }
                 equipos.add(e);
             }
             resultado.close();

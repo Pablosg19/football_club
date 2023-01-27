@@ -72,7 +72,7 @@ public class BorrarEquipoActivity extends AppCompatActivity {
             nombreEquipo = e.getNombreEquipo();
         }
         AlertDialog.Builder borrarEquipo = new AlertDialog.Builder(this);
-        borrarEquipo.setTitle("¿Quieres borrar el curso?");
+        borrarEquipo.setTitle("¿Quieres borrar el equipo?");
         String finalNombreEquipo = nombreEquipo;
         borrarEquipo.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override

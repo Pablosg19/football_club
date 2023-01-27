@@ -1,5 +1,6 @@
 package com.example.footballclub.clases;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -13,6 +14,7 @@ public class Equipo implements Parcelable {
     private String ciudadEquipo;
     private int numTitulos;
     private int idLiga;
+    private Bitmap fotoEquipo;
     // Constructor
     public Equipo(int idEquipo,String nombreEquipo, String ciudadEquipo, int numTitulos, int idLiga) {
         this.idEquipo = idEquipo;
@@ -20,6 +22,15 @@ public class Equipo implements Parcelable {
         this.ciudadEquipo = ciudadEquipo;
         this.numTitulos = numTitulos;
         this.idLiga = idLiga;
+        this.fotoEquipo = null;
+    }
+    public Equipo(int idEquipo,String nombreEquipo, String ciudadEquipo, int numTitulos, int idLiga, Bitmap fotoEquipo) {
+        this.idEquipo = idEquipo;
+        this.nombreEquipo = nombreEquipo;
+        this.ciudadEquipo = ciudadEquipo;
+        this.numTitulos = numTitulos;
+        this.idLiga = idLiga;
+        this.fotoEquipo = fotoEquipo;
     }
 
     protected Equipo(Parcel in) {
@@ -76,9 +87,16 @@ public class Equipo implements Parcelable {
     public void setIdLiga(int idLiga) {
         this.idLiga = idLiga;
     }
+
+    public Bitmap getFotoEquipo() {
+        return fotoEquipo;
+    }
+
+    public void setFotoEquipo(Bitmap fotoEquipo) {
+        this.fotoEquipo = fotoEquipo;
+    }
+
     // HasCode and Equals
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
